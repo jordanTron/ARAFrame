@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web AR App</title>
+        <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+        <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+        <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <style>
+            body{
+                margin : 0px;
+                overflow: hidden;
+            }
+            #ui{
+                
+                width: 100%;
+                margin-top:75px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+            <div id="ui">
+                <button id="CapBtn">Cap and Glasses</button>
+                <button id="BowlerBtn">Bowler Apple</button>
+                <button id="EyeballBtn">Eyeball</button>
+                <button id="DownloadMask">Download Mask</button>
+            </div>
+            <a-scene embedded arjs=’sourceType: webcam;’>
+                    <a-marker preset=’hiro’>
+                            <a-entity obj-model='obj: url(/model/hat.obj);' scale='0.15 0.15 0.15'></a-entity>
+                            <!--<a-entity
+                                fbx-model="src: url(/model/TestHat.FBX)" >
+                            </a-entity>-->
+                            <a-box position='0 0.5 0' material='color: black;'></a-box>
+                    </a-marker>
+                    <a-marker type='pattern' url='pattern/pattern-marker.patt'>
+                        <a-entity id='Mask' obj-model='obj: url(/model/AppleBowler_Hat.obj); ' scale='0.2 0.2 0.2' position='0 -3 0'><!--mtl: url(/model/AppleBowler_Hat.mtl) mtl: url(/model/EyeBall.mtl)-->
+                        </a-entity>
+                        <!--<a-box position='0 0.5 0' material='color: black;'></a-box>-->
+                    </a-marker>
+
+                    <a-entity camera></a-entity>
+                    
+            </a-scene>
+            <script>
+                $(document).ready(function() {
+                     $("#CapBtn").click(function() {
+                        $("#Mask").replaceWith("<a-entity id='Mask' obj-model='obj: url(/model/hat.obj);' scale='0.3 0.3 0.3' position='0 -1 -3.5'></a-entity>");
+                    });
+                    $("#BowlerBtn").click(function() {
+                        $("#Mask").replaceWith("<a-entity id='Mask' obj-model='obj: url(/model/AppleBowler_Hat.obj);' scale='0.2 0.2 0.2'></a-entity>");
+                    });
+                    $("#EyeballBtn").click(function() {
+                        $("#Mask").replaceWith("<a-entity id='Mask' obj-model='obj: url(/model/EyeBall.obj); ' scale='17 17 17' position='0 -2 -2.5'></a-entity>");
+                    });
+                    $("#DownloadMask").click(function() {
+                        window.open("mask/MaskPAttern.jpg");
+                            
+                    });
+                });
+            
+            </script>
+        
+    </body>
+</html>
