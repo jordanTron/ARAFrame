@@ -16,6 +16,10 @@ router.get('/model/hat.obj',function(req,res){
   res.sendFile(path.join(__dirname+'/model/hat.obj'));
 });
 
+router.get('/model/BowlerHATFBXTest.gltf',function(req,res){
+    res.sendFile(path.join(__dirname+'/model/BowlerHATFBXTest.gltf'));
+});
+
 router.get('/model/AppleBowler_Hat.obj',function(req,res){
     res.sendFile(path.join(__dirname+'/model/AppleBowler_Hat.obj'));
 });
@@ -24,8 +28,8 @@ router.get('/model/AppleBowler_Hat.mtl',function(req,res){
     res.sendFile(path.join(__dirname+'/model/AppleBowler_Hat.mtl'));
 });
 
-router.get('/model/AppleBowlerTex.jpg',function(req,res){
-    res.sendFile(path.join(__dirname+'/model/AppleBowlerTex.jpg'));
+router.get('/model/AppleBowlerTex.png',function(req,res){
+    res.sendFile(path.join(__dirname+'/model/AppleBowlerTex.png'));
 });
 router.get('/model/EyeBall.obj',function(req,res){
     res.sendFile(path.join(__dirname+'/model/EyeBall.obj'));
